@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>597305876418-ro9f026m8rn02ur7tgjs7vkn1p44mtir.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.597305876418-ro9f026m8rn02ur7tgjs7vkn1p44mtir</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDQluTPZTE-AoQG5Bkc9OEzEKL5U6TN23c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>597305876418</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.lucidapps.buybox</string>
+	<key>PROJECT_ID</key>
+	<string>buybox-0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>buybox-0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:597305876418:ios:17b36938488ab66759005b</string>
+	<key>DATABASE_URL</key>
+	<string>https://buybox-0.firebaseio.com</string>
+</dict>
+</plist>

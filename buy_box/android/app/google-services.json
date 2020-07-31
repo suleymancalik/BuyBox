@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "597305876418",
+    "firebase_url": "https://buybox-0.firebaseio.com",
+    "project_id": "buybox-0",
+    "storage_bucket": "buybox-0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597305876418:android:0b7873a023838c5459005b",
+        "android_client_info": {
+          "package_name": "com.lucidapps.buybox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597305876418-g27ikhoh1gejl5g1kj93m68i2r8533ur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8P7Bn-tEyJLmz0x_Uy-OTpsECAdn6HVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "597305876418-g27ikhoh1gejl5g1kj93m68i2r8533ur.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "597305876418-ro9f026m8rn02ur7tgjs7vkn1p44mtir.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lucidapps.buybox"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
