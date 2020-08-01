@@ -26,4 +26,25 @@ class Goal {
   }
 
 
+  static Future<Goal> getWithId(String uid) async {
+    var document = await collection().document(uid).get();
+    if (document.data == null) {
+      print("No Goal");
+      return null;
+    }
+    else {
+      Goal goal = Goal.fromSnapshot(document);
+      return goal;
+    }
+  }
+
+
+
+  static Future<QuerySnapshot> getWithUserId(String userId) async {
+    Query query = collection()
+        .where('userId', isEqualTo:userId)
+        .where('isActive', isEqualTo:true);
+    return query.snapshots().first;
+  }
+
 }

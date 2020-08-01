@@ -24,12 +24,15 @@ class _ScrWelcomeState extends State<ScrWelcome> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return MaterialApp(
+      home: Scaffold(
+        //body: Center(child:CircularProgressIndicator()),
+      ),
+    );
   }
 
   void checkUser(BuildContext context, FirebaseUser authUser) async {
     print('Cheking user...');
-    //_checking = true;
     if (authUser == null) {
       final res = await _signInAnonymously();
       if (res.user != null) {
@@ -37,7 +40,6 @@ class _ScrWelcomeState extends State<ScrWelcome> {
       }
       else {
         print('Can not sign in Anonymously!');
-        //_checking = false;
         return;
       }
     }
@@ -45,26 +47,35 @@ class _ScrWelcomeState extends State<ScrWelcome> {
       User.authUser = authUser;
     }
 
-    /*
-    final goal = await Home.getWithUserId(User.currentUser.uid);
-    if (home == null) {
-      print('Opening ScrSelectHome');
+    Goal goal;
+
+    final goalStream = await Goal.getWithUserId(authUser.uid);
+    if (goalStream.documents.length > 0) {
+      final goalSS = goalStream.documents.first;
+      if (goalSS != null) {
+        goal = Goal.fromSnapshot(goalSS);
+      }
+    }
+
+    if (goal == null) {
+      print('Opening ScrCreateGoal');
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (BuildContext context) => ScrSelectHome()));
+          builder: (BuildContext context) => ScrCreateGoal()));
     }
     else {
-      Home.currentHome = home;
+      Goal.currentGoal = goal;
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (BuildContext context) => ScrHome()));
+          builder: (BuildContext context) => ScrGoalDetail()));
     }
-     */
 
   }
 
   Future<AuthResult> _signInAnonymously() async {
     try {
       return FirebaseAuth.instance.signInAnonymously();
-    } catch (e) {
+    }
+    catch (e) {
+      print('_signInAnonymously failed!');
       print(e);
       return null;
     }
