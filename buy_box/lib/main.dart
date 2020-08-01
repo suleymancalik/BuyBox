@@ -1,11 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/scheduler.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+
+  @override
+  _MyAppState createState() => _MyAppState();
+
+}
+
+class _MyAppState extends State<MyApp> {
+
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      FirebaseAuth.instance.currentUser().then((FirebaseUser authUser) {
+        checkUser(context, authUser);
+      });
+    });
+  }
+
+  void checkUser(BuildContext context, FirebaseUser authUser) async {
+    print('Cheking user...');
+    //_checking = true;
+    if (authUser == null) {
+      final res = await _signInAnonymously();
+      if (res.user != null) {
+        print("Signed in Anonymously");
+      }
+      else {
+        print('Can not sign in Anonymously!');
+        //_checking = false;
+        return;
+      }
+    }
+  }
+
+  Future<AuthResult> _signInAnonymously() async {
+    try {
+      return FirebaseAuth.instance.signInAnonymously();
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
