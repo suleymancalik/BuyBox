@@ -61,7 +61,7 @@ class Goal {
         'uid': uid,
         'userId': User.authUser.uid,
         'totalAmount': amount,
-        'reachedAmount': 0,
+        'reachedAmount': 0.0,
         'active': true,
         'completed': false,
         'createdAt': DateTime.now(),
