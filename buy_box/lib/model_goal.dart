@@ -75,11 +75,22 @@ class Goal {
   }
 
   Future<Goal> addNewDrop(double amount) async {
-    Drop drop = await Drop.createOrUpdate(amount: amount, goalId: this.uid);
+    final remaining = totalAmount - reachedAmount;
+
+    double dropAmount = amount;
+    bool completed = false;
+
+    if (amount >= remaining) {
+      dropAmount = remaining;
+      completed = true;
+    }
+
+    Drop drop = await Drop.createOrUpdate(amount: dropAmount, goalId: this.uid);
     if (drop != null) {
       document(uid).updateData({
-        'reachedAmount': reachedAmount + amount,
-        'updatedAt': DateTime.now()
+        'reachedAmount': reachedAmount + dropAmount,
+        'updatedAt': DateTime.now(),
+        'completed': completed
       });
       return await Goal.getWithId(uid);
     } else {

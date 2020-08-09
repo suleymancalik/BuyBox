@@ -49,7 +49,7 @@ class _ScrCreateGoalState extends State<ScrCreateGoal> {
     ];
 
     if (working) {
-      children.add(CircularProgressIndicator());
+      children.add(Center(child: CircularProgressIndicator()));
     }
 
     return Scaffold(

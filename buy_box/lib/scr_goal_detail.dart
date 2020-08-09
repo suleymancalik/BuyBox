@@ -1,3 +1,5 @@
+import 'package:buy_box/scr_completed.dart';
+
 import 'import.dart';
 
 class ScrGoalDetail extends StatefulWidget {
@@ -49,6 +51,10 @@ class _ScrGoalDetailState extends State<ScrGoalDetail> {
       )
     ];
 
+    if (working) {
+      children.add(Center(child: CircularProgressIndicator()));
+    }
+
     return Scaffold(
       appBar: new AppBar(
         title: new Text('Buy Box'),
@@ -66,8 +72,14 @@ class _ScrGoalDetailState extends State<ScrGoalDetail> {
       working = true;
     });
     Goal.currentGoal.addNewDrop(dropAmount).then((goal) {
-      Goal.currentGoal = goal;
-      setState(() => working = false);
+      if (goal.completed) {
+        Goal.currentGoal = null;
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => ScrCompleted()));
+      } else {
+        Goal.currentGoal = goal;
+        setState(() => working = false);
+      }
     });
   }
 }
