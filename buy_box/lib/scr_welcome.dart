@@ -1,15 +1,11 @@
 import 'import.dart';
 
-
 class ScrWelcome extends StatefulWidget {
-
   @override
   _ScrWelcomeState createState() => _ScrWelcomeState();
-
 }
 
 class _ScrWelcomeState extends State<ScrWelcome> {
-
   //bool _checking = false;
 
   @override
@@ -25,7 +21,7 @@ class _ScrWelcomeState extends State<ScrWelcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child:CircularProgressIndicator()),
+      body: Center(child: CircularProgressIndicator()),
     );
   }
 
@@ -35,13 +31,11 @@ class _ScrWelcomeState extends State<ScrWelcome> {
       final res = await _signInAnonymously();
       if (res.user != null) {
         User.authUser = res.user;
-      }
-      else {
+      } else {
         print('Can not sign in Anonymously!');
         return;
       }
-    }
-    else {
+    } else {
       User.authUser = authUser;
     }
 
@@ -59,20 +53,17 @@ class _ScrWelcomeState extends State<ScrWelcome> {
       print('Opening ScrCreateGoal');
       Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (BuildContext context) => ScrCreateGoal()));
-    }
-    else {
+    } else {
       Goal.currentGoal = goal;
       Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (BuildContext context) => ScrGoalDetail()));
     }
-
   }
 
   Future<AuthResult> _signInAnonymously() async {
     try {
       return FirebaseAuth.instance.signInAnonymously();
-    }
-    catch (e) {
+    } catch (e) {
       print('_signInAnonymously failed!');
       print(e);
       return null;
